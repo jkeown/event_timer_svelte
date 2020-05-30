@@ -21,6 +21,8 @@
     events = [...events, newEvent];
 
     localStorage.setItem("events", JSON.stringify(events));
+    events = JSON.parse(localStorage.getItem("events"));
+
 
     if (showEvents === false) showEvents = true;
   }
@@ -29,6 +31,8 @@
     events = events.filter(event => event.name !== e.detail);
     events = [...events];
     localStorage.setItem("events", JSON.stringify(events));
+    events = JSON.parse(localStorage.getItem("events"));
+
 
   }
 </script>
