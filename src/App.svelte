@@ -4,37 +4,13 @@
   import { fade } from "svelte/transition";
   export let name;
 
-  let events = [];
+  let events = new Set();
 
   if (localStorage.getItem("events")) {
     events = JSON.parse(localStorage.getItem("events"));
   } else {
     localStorage.setItem("events", JSON.stringify(events));
   }
-
-  // let events = [
-  //   {
-  //     name: "JoyTime",
-  //     date: "2020-07-04",
-  //     time: "00:00",
-  //     id: 1234
-  //   },
-  //   {
-  //     name: "Surfy Surfy",
-  //     date: "2020-05-15",
-  //     time: "12:30",
-  //     id: 44776
-  //   },
-  //   {
-  //     name: "Happy Happy Joy Joy",
-  //     date: "2021-07-04",
-  //     time: "23:00",
-  //     id: 443467
-  //   }
-  // ];
-
-  // localStorage.setItem("events", JSON.stringify(events));
-  // events = JSON.parse(localStorage.getItem("events"));
 
   let showEvents = true;
 
@@ -54,8 +30,6 @@
     events = [...events];
     localStorage.setItem("events", JSON.stringify(events));
 
-    // toggleEvents();
-    // setTimeout(toggleEvents, .1);
   }
 </script>
 
@@ -131,8 +105,6 @@
       </button>
       {#if showEvents}
         <div class="events" transition:fade>
-
-          <!-- ADDING (event.id) WHILE STILL FILTERING BY name BUT WHY ?????? -->
           {#each events as event (event.id)}
             <Event {...event} on:deleteEvent={deleteEvent} />
           {/each}

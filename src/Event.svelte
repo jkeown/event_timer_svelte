@@ -16,20 +16,26 @@
     "purple-bubbles-sharon-mccutcheon",
     "tye-dye-roses-denise-chan"
   ];
-
   let image = Math.floor(Math.random() * 6 + 1);
 
   const deleteEvent = () => dispatch("deleteEvent", name);
 
   let countdownDate = new Date(`${date.replace(/-/g, "/")} ${time}`).getTime();
 
-  function timeFormat(time){
-    let hour = time.slice(0,2);
-    let partOfDay = hour >= 12 ? 'pm' : 'am';
-    let minute = time.slice(3,);
+  function dateFormat(date){
+  date = date.replace(/-/g, "/");
+  return new Date(date).toDateString();
+  }
+
+  function timeFormat(time) {
+    let hour = time.slice(0, 2);
+    let partOfDay = hour >= 12 ? "pm" : "am";
+    let minute = time.slice(3);
 
     hour = parseInt(hour) % 12;
-    if (hour === 0){hour = 12};
+    if (hour === 0) {
+      hour = 12;
+    }
 
     return `${hour}:${minute} ${partOfDay}`;
   }
@@ -81,7 +87,7 @@
     font-size: 2rem;
     color: #9f7aea;
   }
-  button{
+  button {
     background: none;
     border: none;
   }
@@ -124,11 +130,13 @@
     <div>
       <span class="event-name">{name}</span>
       <br />
-      {new Date(date).toDateString()} <br>at<br> {timeFormat(time)}
+      {dateFormat(date)}
+      <br />
+      at
+      <br />
+      {timeFormat(time)}
     </div>
 
-    <!-- BELOW COUNTDOWN DATA IS NOT BEING DELETED WHEN EVENT IS DELETED ???? -->
-    <!-- MAYBE TRY CONTEXT API / this.id LIKE TODO APP ???? -->
     {#if distance > 0}
       <div class="countdown">
         {#if days > 0}

@@ -1,5 +1,4 @@
 <script>
-  // export let event;
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -9,8 +8,6 @@
     date: "",
     time: ""
   };
-
-  // export let scheduleEvent;
 
   function sendEvent(e) {
     dispatch("addEvent", event);
@@ -33,7 +30,6 @@
   }
     
   input {
-    /* height: 40px; */
     width: 100%;
     padding: 5px;
     border-color: #d6bcfa;
@@ -56,12 +52,6 @@
     color: #faf5ff;
     background: #805ad5;
   }
-
-  /* @media (min-width: 640px) {
-    form {
-      flex-direction: row;
-    }
-  } */
 </style>
 
 <form on:submit|preventDefault={sendEvent} class="inputs">
