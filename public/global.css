@@ -1,0 +1,15 @@
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #faf5ff;
+	color: #44337a;
+}
+
+
+/* I've noticed global css works intermittently */

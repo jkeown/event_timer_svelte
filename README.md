@@ -1,0 +1,1 @@
+Simple Event(s) Countdown Timer made with Svelte.  Supports multiple timers and saves to local storage for persistence. Developer contact: jkeownwebdev@gmail.com
